@@ -524,3 +524,10 @@ In a real-world deployment, for e,g, in the backend development, we can record e
 
 There are limitations too: with the evolution of AI, future synthetic audios may be more resemble to human and be much harder to detect. In the future, we might need to constantly retrain and update the model with new data or adopt some deep learning models. 
 
+
+## References
+
+Abdeldayem, M. (2023). *The Fake-or-Real (FoR) Dataset* [Dataset]. York University, Toronto, Canada.  
+Licensed under GNU Lesser General Public License 3.0.  
+Retrieved from [https://www.kaggle.com/datasets/mohammedabdeldayem/the-fake-or-real-dataset](https://www.kaggle.com/datasets/mohammedabdeldayem/the-fake-or-real-dataset)
+
