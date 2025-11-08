@@ -9,7 +9,7 @@ import soundfile as sf
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
 
-def prepare_dataset(root_dir, n_mfcc=40):
+def prepare_dataset(root_dir, n_mfcc=50):
 
     file_paths = []
     labels = []
@@ -28,7 +28,6 @@ def prepare_dataset(root_dir, n_mfcc=40):
     
         # mfcc_transform = torchaudio.transforms.MFCC(n_mfcc = n_mfcc)
 
-
     for file_path in tqdm(file_paths):
         y, sr = librosa.load(file_path)
         mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=n_mfcc)
@@ -38,18 +37,19 @@ def prepare_dataset(root_dir, n_mfcc=40):
     df = pd.DataFrame(mfcc_features, columns=[f"mfcc_{i+1}" for i in range(n_mfcc)])
     df["labels"] = labels
     df["file_paths"] = file_paths
-
+    # print(count)
     return df
 
 
 
-train_df = prepare_dataset("/Users/mac/Desktop/DATA37000-25AU/DATA370-midterm-project/data/for-2sec/for-2seconds/training")
-valid_df = prepare_dataset("/Users/mac/Desktop/DATA37000-25AU/DATA370-midterm-project/data/for-2sec/for-2seconds/validation")
-test_df = prepare_dataset("/Users/mac/Desktop/DATA37000-25AU/DATA370-midterm-project/data/for-2sec/for-2seconds/testing")
+train_df = prepare_dataset("/Users/mac/Desktop/DATA37000-25AU/DATA370-midterm-project/data/raw/for-2sec/for-2seconds/training")
+valid_df = prepare_dataset("/Users/mac/Desktop/DATA37000-25AU/DATA370-midterm-project/data/raw/for-2sec/for-2seconds/validation")
+test_df = prepare_dataset("/Users/mac/Desktop/DATA37000-25AU/DATA370-midterm-project/data/raw/for-2sec/for-2seconds/testing")
 
-train_df.to_csv("train_features.csv", index=False)
-valid_df.to_csv("val_features.csv", index=False)
-test_df.to_csv("test_features.csv", index=False)
+
+# train_df.to_csv("/Users/mac/Desktop/DATA37000-25AU/DATA370-midterm-project/data/processed/train_features.csv", index=False)
+# valid_df.to_csv("/Users/mac/Desktop/DATA37000-25AU/DATA370-midterm-project/data/processed/val_features.csv", index=False)
+# test_df.to_csv("/Users/mac/Desktop/DATA37000-25AU/DATA370-midterm-project/data/processed/test_features.csv", index=False)
 
 
 
